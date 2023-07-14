@@ -1,0 +1,26 @@
+<div class="row space-top">
+    <div class="col-md-12">
+        <h1>Car Details</h1>
+    </div>
+</div>
+<div class="row space-top">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <img class="details-img" src={{car?.imgUrl}} />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p>Make: <span>{{car?.make}}</span></p>
+        <p>Model: <span>{{car?.model}}</span></p>
+        <p>Year: <span>{{car?.year}}</span></p>
+        <p>HP: <span>{{car?.hp}}</span></p>
+        <p>Price: <span>{{car?.price}}$</span></p>
+        <p>Description: <span>{{car?.description}}</span></p>
+        <div>
+            <a [routerLink]="['/edit', id]" class="btn btn-info">Edit</a>
+            <a (click)="deleteCar()" routerLink="" class="btn btn-red">Delete</a>
+        </div>
+    </div>
+</div>

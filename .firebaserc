@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "carz-67158": {
+      "hosting": {
+        "carz-project": [
+          "carz-67158"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "carz-67158"
+  }
+}

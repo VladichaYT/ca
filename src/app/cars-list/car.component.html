@@ -1,0 +1,18 @@
+<div class="row">
+    <div *ngFor="let car of carsList; let i = index" class="col-md-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <img class="dashboard-img" [src]="car.imgUrl" />
+          <p><strong>Make:</strong> {{car.make}}</p>
+          <p><strong>Model:</strong> {{car.model}}</p>
+          <footer>
+            <p><strong>Price:</strong> {{car.price}}$</p>
+          </footer>
+          <div>
+            <a [routerLink]="[carId[i]]" class="btn btn-info">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
