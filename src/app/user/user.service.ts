@@ -11,5 +11,6 @@ export class UserService {
 
   async register(email: string, password: string, repeatPassword: string) {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
+    
   }
 }
