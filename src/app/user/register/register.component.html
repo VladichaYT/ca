@@ -4,21 +4,25 @@
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form >
+<form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="email">Email</label>
-                <input class="form-control" id="email" type="text" name="email">
+                <input class="form-control" id="email" type="text" name="email" ngModel email required>
+                <label class="label-error" for="email" *ngIf="registerForm.controls['email']?.errors?.['required']">Email is required!</label>
+                <label class="label-error" for="email" *ngIf="registerForm.controls['email']?.errors?.['email']">Invalid email format!</label>
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="password">Password</label>
-                <input class="form-control" id="password" type="password" name="password">
+                <input class="form-control" id="password" type="password" name="password" ngModel required>
+                <label class="label-error" for="email" *ngIf="registerForm.controls['password']?.errors?.['required']">Password is required!</label>
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="rePass">Repeat</label>
-                <input class="form-control" id="rePass" type="password" name="rePass">
+                <input class="form-control" id="rePass" type="password" name="rePass" ngModel>
             </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
             <input type="submit" class="btn btn-primary" value="Register" />
         </div>
     </div>

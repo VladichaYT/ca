@@ -31,6 +31,9 @@ export class EditCarComponent implements OnInit {
   submitEditForm(form: NgForm) {
     try {
       const data = form.value;
+      const currentUser = JSON.parse(localStorage.getItem('user') || '')      
+      const uid = currentUser?.uid
+      data['ownerId'] = uid
       const id = this.activatedRoute.snapshot.params['carId'];
 
       const headers = {

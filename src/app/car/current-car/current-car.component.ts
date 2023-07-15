@@ -9,9 +9,9 @@ import { Car } from 'src/app/types/carType';
   styleUrls: ['./current-car.component.css']
 })
 export class CurrentCarComponent implements OnInit {
-  car: any;
+  car: any
   id: any
-
+  uid = ''
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService
@@ -19,6 +19,12 @@ export class CurrentCarComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCar();
+    if(localStorage.getItem('user')) {
+      const currentUser = JSON.parse(localStorage.getItem('user') || '')      
+      const uid = currentUser?.uid
+      this.uid = uid
+    }
+      
   }
 
   fetchCar() {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router"
 
 @Component({
@@ -18,6 +18,9 @@ export class NewCarComponent {
   submitForm(form: NgForm) {
     try {
       const data = form.value;
+      const currentUser = JSON.parse(localStorage.getItem('user') || '')      
+      const uid = currentUser?.uid
+      data['ownerId'] = uid
       
       this.httpClient.post("https://carz-67158-default-rtdb.europe-west1.firebasedatabase.app/Cars.json", data)
         .subscribe(() => {

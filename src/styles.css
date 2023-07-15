@@ -235,6 +235,9 @@ img {
     display: block;
     object-fit: cover
 }
+.label-error{
+    color: red;
+}
   
 
   

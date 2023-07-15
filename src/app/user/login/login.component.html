@@ -4,17 +4,21 @@
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form >
+<form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="email">Email</label>
-                <input class="form-control" id="email" type="text" name="email">
+                <input class="form-control" id="email" type="text" name="email" ngModel email required>
+                <label class="label-error" for="email" *ngIf="loginForm.controls['email']?.errors?.['required']">Email is required!</label>
+                <label class="label-error" for="email" *ngIf="loginForm.controls['email']?.errors?.['email']">Invalid email format!</label>
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="password">Password</label>
-                <input class="form-control" id="password" type="password" name="password">
+                <input class="form-control" id="password" type="password" name="password" ngModel required>
+                <label class="label-error" for="email" *ngIf="loginForm.controls['password']?.errors?.['required']">Password is required!</label>
             </div>
+            <div *ngIf="errorMessage" class="label-error">{{ errorMessage }}</div>
             <input type="submit" class="btn btn-primary" value="Login" />
         </div>
     </div>

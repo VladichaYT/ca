@@ -18,7 +18,7 @@
         <p>HP: <span>{{car?.hp}}</span></p>
         <p>Price: <span>{{car?.price}}$</span></p>
         <p>Description: <span>{{car?.description}}</span></p>
-        <div>
+        <div *ngIf="car?.ownerId == uid">
             <a [routerLink]="['/edit', id]" class="btn btn-info">Edit</a>
             <a (click)="deleteCar()" routerLink="" class="btn btn-red">Delete</a>
         </div>

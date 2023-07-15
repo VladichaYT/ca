@@ -13,8 +13,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { CarComponent } from './cars-list/car.component';
 import { MainComponent } from './main/main.component';
 import { CarModule } from './car/car.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
@@ -30,6 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     CarModule,
     FormsModule,
+    ReactiveFormsModule,
+    UserModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
