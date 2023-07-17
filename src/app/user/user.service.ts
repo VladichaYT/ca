@@ -20,10 +20,6 @@ export class UserService {
   }
 
   async register(email: string, password: string, repeatPassword: string) {
-    if(password != repeatPassword) {
-      //TODO:
-      // show password missmatch pop up or some error box
-    }
     await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
     .then(res=> {
       this.isLoggedIn = true

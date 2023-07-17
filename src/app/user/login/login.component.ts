@@ -12,19 +12,16 @@ export class LoginComponent {
 
   constructor(private userService: UserService) { }
 
-  async onLogin(form: NgForm){
+  async onLogin(form: NgForm) {
     const { email, password } = form.value;
     try {
       await this.userService.login(email, password);
     } catch (error: any) {
-      const errorMessages = [
-        'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).',
-        'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).',
-        'Firebase: Error (auth/wrong-password).'
-      ];
-
-      if (errorMessages.includes(error.message)) {
+      console.error(error);
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
         this.errorMessage = 'Email or password is incorrect!';
+      } else {
+        this.errorMessage = 'An error occurred while logging in.';
       }
     }
   }
