@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,14 @@ export class UserService {
     this.firebaseAuth.signOut()
     this.isLoggedIn = false
     localStorage.removeItem('user')
+  }
+
+  getUserData(): Observable<any> {
+    return this.firebaseAuth.authState;
+  }
+
+  isAuthenticated() {
+    return this.isLoggedIn;
   }
   
 }

@@ -17,4 +17,10 @@ export class ApiService {
   deleteCarById(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}.json`)
   }
+  getCarsByOwnerId(ownerId: string): Observable<any> {
+    const url = `${this.apiUrl}.json?orderBy="ownerId"&equalTo="${ownerId}"`
+
+    const cars = this.http.get(url)
+    return cars
+  }
 }
