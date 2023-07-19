@@ -10,12 +10,14 @@ import { Router } from "@angular/router"
 })
 export class NewCarComponent {
   car: any = {};
+  isLoading: boolean = false
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   
   
   submitForm(form: NgForm) {
+    this.isLoading = true
     try {
       const data = form.value;
       const currentUser = JSON.parse(localStorage.getItem('user') || '')      

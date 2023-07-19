@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Register New User</h1>
@@ -26,7 +27,10 @@
                 <label class="label-error" for="rePass" *ngIf="inputRePass.errors?.['required']">Required!</label>
             </div>
             <div *ngIf="errorMessage" class="label-error">{{ errorMessage }}</div>
-            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" [style]="{ backgroundColor: registerForm.invalid ? 'grey' : '' }"  value="Register">Register</button>
+            <button *ngIf="isLoading" disabled class="buttonload">
+                <i class="fa fa-spinner fa-spin"></i> Loading
+              </button>
+            <button *ngIf="!isLoading" type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" [style]="{ backgroundColor: registerForm.invalid ? 'grey' : '' }">Register</button>
         </div>
     </div>
 </form>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row space-top">
     <div class="col-md-12">
         <h1>Login User</h1>
@@ -19,7 +20,10 @@
                 <label class="label-error" for="email" *ngIf="loginForm.controls['password']?.errors?.['required']">Password is required!</label>
             </div>
             <div *ngIf="errorMessage" class="label-error">{{ errorMessage }}</div>
-            <input type="submit" class="btn btn-primary" value="Login" />
+            <button *ngIf="isLoading" disabled class="buttonload">
+                <i class="fa fa-spinner fa-spin"></i> Loading
+              </button>
+              <button type="submit" *ngIf="!isLoading" class="btn btn-primary" [disabled]="loginForm.invalid" [style]="{ backgroundColor: loginForm.invalid ? 'grey' : '' }">Login</button>
         </div>
     </div>
 </form>

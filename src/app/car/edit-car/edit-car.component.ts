@@ -12,6 +12,7 @@ import { Car } from 'src/app/types/carType';
 })
 export class EditCarComponent implements OnInit {
   car: any = {};
+  isLoading: boolean = true
 
   constructor(
     private httpClient: HttpClient,
@@ -25,6 +26,7 @@ export class EditCarComponent implements OnInit {
 
     this.apiService.getCar(id).subscribe((car: Car) => {
       this.car = car;
+      this.isLoading = false
     });
   }
 
@@ -39,7 +41,6 @@ export class EditCarComponent implements OnInit {
       const headers = {
         'Content-Type': 'application/json'
       };
-
       this.httpClient
         .put(`https://carz-67158-default-rtdb.europe-west1.firebasedatabase.app/Cars/${id}.json`, data, { headers })
         .subscribe(() => {

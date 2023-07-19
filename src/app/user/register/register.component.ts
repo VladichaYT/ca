@@ -9,12 +9,13 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent {
   errorMessage: any = ''
+  isLoading: boolean = false
 
   constructor(public userService: UserService) {}
 
   async onRegister(form: NgForm) {
     const { email, password, rePass } = form.value
-    console.log(password, rePass);
+    this.isLoading = true
     
     if(password !== rePass){
       this.errorMessage = 'Passwords missmatch!'
@@ -24,8 +25,10 @@ export class RegisterComponent {
     } catch (error: any) {
       if(error.code === 'auth/email-already-in-use'){
         this.errorMessage = 'Email already in use!'
+        this.isLoading = false
       } else {
         this.errorMessage = 'An error occurred while registering!'
+        this.isLoading = false
       }
     }
       

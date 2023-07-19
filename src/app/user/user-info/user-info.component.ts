@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/api.service';
 export class UserInfoComponent implements OnInit {
   user: any;
   cars: any[] = [];
+  isLoading: boolean = true
 
   constructor(private userService: UserService, private apiService: ApiService) {}
 
@@ -19,7 +20,8 @@ export class UserInfoComponent implements OnInit {
       
       this.apiService.getCarsByOwnerId(this.user?.uid).subscribe(carsObj => {
         this.cars = Object.keys(carsObj).map(key => carsObj[key]);
-      });
+        this.isLoading = false
+      })
     });
   }
 

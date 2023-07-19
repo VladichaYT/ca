@@ -12,6 +12,8 @@ export class CurrentCarComponent implements OnInit {
   car: any
   id: any
   uid = ''
+  isLoading: boolean = true
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
@@ -19,13 +21,13 @@ export class CurrentCarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchCar();
+    this.fetchCar()
     if(localStorage.getItem('user')) {
       const currentUser = JSON.parse(localStorage.getItem('user') || '')      
       const uid = currentUser?.uid
       this.uid = uid
     }
-      
+
   }
 
   fetchCar() {
@@ -33,7 +35,9 @@ export class CurrentCarComponent implements OnInit {
     this.apiService.getCar(id).subscribe((car: Car) => {
       this.car = car;
       this.id = id
+      this.isLoading = false 
     });
+    
   }
 
   deleteCar() {

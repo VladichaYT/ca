@@ -19,7 +19,8 @@
                   </div>
                   <div class="col-sm-6">
                     <p class="m-b-10 f-w-600 email-text">Cars Created</p>
-                    <ul>
+                    <app-loader *ngIf="isLoading" />
+                    <ul *ngIf="!isLoading">
                         <li *ngFor="let car of cars">
                           {{ car.make }} {{ car.model }}
                         </li>

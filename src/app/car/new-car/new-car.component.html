@@ -4,8 +4,11 @@
         <p>Please fill all fields.</p>
     </div>
 </div>
+<div *ngIf="isLoading">
+    <app-loader />
+</div>
 <form #carForm="ngForm" (ngSubmit)="submitForm(carForm); false">
-    <div class="row space-top">
+    <div *ngIf="!isLoading" class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="new-make">Make</label>
