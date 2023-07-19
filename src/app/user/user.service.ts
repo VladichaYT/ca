@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService{
   isLoggedIn = false
 
   constructor(public firebaseAuth: AngularFireAuth, private router: Router) { }
+
 
   async login(email: string, password: string) {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -40,6 +41,9 @@ export class UserService {
   }
 
   isAuthenticated() {
+    const user = localStorage.getItem('user')
+    this.isLoggedIn = !!user;
+
     return this.isLoggedIn;
   }
   

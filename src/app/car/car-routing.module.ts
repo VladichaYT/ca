@@ -4,6 +4,8 @@ import { MainComponent } from '../main/main.component';
 import { CurrentCarComponent } from './current-car/current-car.component';
 import { NewCarComponent } from './new-car/new-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
+import { AuthActivation } from '../core/guards/auth.guard';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -17,15 +19,18 @@ const routes: Routes = [
       {
         path: ':carId',
         component: CurrentCarComponent
-      }
+      },
+      
     ]
   },
   {
     path: 'add-car',
-    component: NewCarComponent
+    component: NewCarComponent,
+    canActivate: [AuthActivation]
   },
   {
     path: 'edit',
+    canActivate: [AuthActivation],
     children: [
       {
         path: '',
@@ -36,7 +41,11 @@ const routes: Routes = [
         path: ':carId',
         component: EditCarComponent
       }
-    ]
+    ],
+  },
+  {
+    path: '**', // Move the wildcard route to the end
+    component: NotFoundComponent
   }
 ];
 
@@ -44,4 +53,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CarRoutingModule { }
+export class CarRoutingModule {}

@@ -16,6 +16,7 @@ import { CarModule } from './car/car.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserModule } from './user/user.module';
     AppComponent,
     CarComponent,
     MainComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
