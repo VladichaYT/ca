@@ -7,14 +7,14 @@
     <app-loader />
 </div>
 <div *ngIf="!isLoading" class="row space-top">
-    <div class="col-md-4">
+    <div class="col-md-1">
         <div class="card text-white bg-primary">
-            <div class="card-body">
+            <div class="details-card-body">
                 <img class="details-img" src={{car?.imgUrl}} />
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-details">
         <p>Make: <span>{{car?.make}}</span></p>
         <p>Model: <span>{{car?.model}}</span></p>
         <p>Year: <span>{{car?.year}}</span></p>

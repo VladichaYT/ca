@@ -24,7 +24,8 @@
             </div>
             <div class="form-group">
                 <label class="form-control-label" for="new-description">Description</label>
-                <textarea class="new-description" name="description" cols="30" rows="3" [(ngModel)]="car.description"></textarea>
+                <textarea class="new-description" name="description" cols="30" rows="3" [(ngModel)]="car.description" maxlength="200"></textarea>
+                <label class="label-error" for="description">Characters left: {{200 - car.description.length}}</label>
             </div>
             <input type="submit" class="btn btn-primary" value="Create" />
         </div>
