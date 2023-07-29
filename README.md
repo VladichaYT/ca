@@ -36,11 +36,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installing
 A step by step series of examples that tell you how to get a development env running.
 
-Once you have all of the files in your Visual Studio Code, paste this in the terminal.
-
-```
-npm install
-```
+Once you have all of the files in your Visual Studio Code, run ```npm install``` in the terminal.
 
 ## 🎈 Usage <a name="usage"></a>
 To create, edit or delete a car you need an account. Create one by clicking on register. 
