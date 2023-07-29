@@ -42,12 +42,6 @@ Once you have all of the files in your Visual Studio Code, paste this in the ter
 npm install
 ```
 
-Then
-
-```
-npm install -g @angular/cli
-```
-
 ## 🎈 Usage <a name="usage"></a>
 To create, edit or delete a car you need an account. Create one by clicking on register. 
 
