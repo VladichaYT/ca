@@ -15,7 +15,10 @@ const routes: Routes = [
   },
   {
     path: 'cars',
-    component: MainComponent
+    component: MainComponent,
+    children: [
+      { path: '', pathMatch: 'full',  loadChildren: () => import('./car/car.module').then(m => m.CarModule)}
+    ]
   },
   {
     path: 'login',
@@ -31,7 +34,8 @@ const routes: Routes = [
     path: 'user-info',
     component: UserInfoComponent,
     canActivate: [AuthActivation]
-  }
+  },
+  
 ];
 
 
