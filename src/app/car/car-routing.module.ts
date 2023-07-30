@@ -43,7 +43,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: '**', // Move the wildcard route to the end
+    path: '**',
     component: NotFoundComponent
   }
 ];
