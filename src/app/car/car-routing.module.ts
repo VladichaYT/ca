@@ -20,7 +20,6 @@ const routes: Routes = [
         path: ':carId',
         component: CurrentCarComponent
       },
-      
     ]
   },
   {
